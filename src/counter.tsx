@@ -11,27 +11,35 @@ const initialState = {
 }
 
 const store = createStore((state: any = initialState, action: any) => {
+    var tasks;
+
     switch (action.type) {
         case 'UPDATE_ARRAY':
-            var tasks = [...state.tasks]
-            tasks[0].value = "prueba " + Math.round(Math.random() * 100)
+            tasks = [...state.tasks]
             tasks.push({
+                id: Math.round(Math.random() * 10000),
                 value: "prueba new",
-                date: new Date("5/14/2019")
-            })
+                date: new Date("5/14/2019"),
+                done: false
+            } as TaskDataModel)
             return {
                 ...state,
                 tasks: tasks
             }
         case 'UPDATE_ONE':
-            var tasks = [...state.tasks]
-            tasks[action.id].done = !tasks[action.id].done
+            tasks = [...state.tasks]
+            let taskIndex = tasks.findIndex((el) => el.id === action.id)
+            tasks[taskIndex] = {
+                ...tasks[taskIndex],
+                done: !tasks[taskIndex].done
+            }
+
             return {
                 ...state,
-                tasks: tasks
+                tasks: [...tasks]
             }
-        default:
 
+        default:
             return state
     }
 },

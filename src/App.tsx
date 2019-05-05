@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.scss';
 import Task from './Task';
-import counter from "./counter"
 import TaskDataModel from './TaskDataModel';
 import store from "./counter"
 
