@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import Task from './Task';
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    tasks: [
+      {
+        value: "prueba",
+        date: new Date("5/5/2019")
+      },
+      {
+        value: "prueba 2",
+        date: new Date("5/4/2019")
+      }
+    ]
+  }
+
+  render() {
+    return (
+      <div className="App">
+        {
+          this.state.tasks.map((task, idx) => <Task key={idx} val={task} />)
+        }
+      </div>
+    )
+  }
 }
 
 export default App;

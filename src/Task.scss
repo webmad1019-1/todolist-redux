@@ -1,0 +1,33 @@
+.task {
+    border-radius: 30px;
+    border: 1px solid black;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.5s;
+
+    &--true {
+        text-decoration: line-through;
+    }
+
+    &--dark {
+        background: black;
+        color: white;
+
+        &:hover {
+            background: #c00;
+        }
+    }
+
+    &--normal {
+        background: white;
+        color: black;
+
+        &:hover {
+            background: #ccc;
+        }
+    }
+}
+
