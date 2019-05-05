@@ -1,17 +1,40 @@
-export default function counter(state: any, action: any) {
+import { createStore } from 'redux'
+import TaskDataModel from './TaskDataModel';
+
+const initialState = {
+    tasks: [...Array(5)].map((x, idx) => ({
+        value: "prueba " + Math.round(Math.random() * 100),
+        date: new Date("5/" + (Math.round(Math.random() * 20) + 1) + "/2019"),
+        done: false,
+        id: idx
+    } as TaskDataModel))
+}
+
+const store = createStore((state: any = initialState, action: any) => {
     switch (action.type) {
         case 'UPDATE_ARRAY':
-            let tasks = [...action.state.tasks]
+            var tasks = [...state.tasks]
             tasks[0].value = "prueba " + Math.round(Math.random() * 100)
             tasks.push({
                 value: "prueba new",
                 date: new Date("5/14/2019")
             })
             return {
-                ...action.state,
+                ...state,
+                tasks: tasks
+            }
+        case 'UPDATE_ONE':
+            var tasks = [...state.tasks]
+            tasks[action.id].done = !tasks[action.id].done
+            return {
+                ...state,
                 tasks: tasks
             }
         default:
-            return action.state
+
+            return state
     }
-}
+},
+    (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__())
+
+export default store;

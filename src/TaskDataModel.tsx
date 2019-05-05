@@ -1,5 +1,6 @@
 export default interface TaskDataModel {
   value: String,
   date: Date,
-  done: Boolean
+  done: Boolean,
+  id: Number
 }
