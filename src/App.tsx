@@ -2,19 +2,16 @@ import React from 'react';
 import './App.scss';
 import Task from './Task';
 import { createStore } from 'redux'
+import counter from "./counter"
+import TaskDataModel from './TaskDataModel';
 
 interface Test {
   tasks: Array<TaskDataModel>
 }
 
-interface TaskDataModel {
-  value: string,
-  date: Date
-}
-
 class App extends React.Component {
   store: any;
-  state: Test = { tasks: [] }
+  state: any = { tasks: [] }
 
   constructor(props: any) {
     super(props)
@@ -22,28 +19,11 @@ class App extends React.Component {
     var that = this
 
     this.state = {
-      tasks: [...Array(4)].map(() => ({
+      tasks: [...Array(5)].map(() => ({
         value: "prueba " + Math.round(Math.random() * 100),
-        date: new Date("5/" + (Math.round(Math.random() * 20) + 1) + "/2019")
-      }))
-    }
-
-    function counter(state: any = that.state, action: any) {
-      switch (action.type) {
-        case 'UPDATE_ARRAY':
-          let tasks = [...state.tasks]
-          tasks[0].value = "prueba 69"
-          tasks.push({
-            value: "prueba new",
-            date: new Date("5/14/2019")
-          })
-          return {
-            ...state,
-            tasks: tasks
-          }
-        default:
-          return state
-      }
+        date: new Date("5/" + (Math.round(Math.random() * 20) + 1) + "/2019"),
+        done: false
+      } as TaskDataModel))
     }
 
     this.store = createStore(counter)
@@ -62,7 +42,7 @@ class App extends React.Component {
       <div className="App">
         {
           this.state.tasks.map(function (task: any, idx: number) {
-            return <Task key={idx} val={task} />
+            return <Task key={idx} {...task} />
           })
         }
 

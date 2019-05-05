@@ -1,15 +1,10 @@
 import React from 'react';
 import './Task.scss';
 import Moment from 'react-moment';
+import TaskDataModel from './TaskDataModel';
 
-interface TaskDataModel {
-    value: string,
-    date: Date
-}
-
-interface MakeCounterProps {
-    className?: string,
-    val: TaskDataModel
+interface MakeCounterProps extends TaskDataModel{
+    className?: string
   }
 
 class Task extends React.Component<MakeCounterProps> {
@@ -34,7 +29,7 @@ class Task extends React.Component<MakeCounterProps> {
     render() {
         return (
             <div className={`task task--${this.theClass} task--${this.state.done}`} onClick={() => this.switchDone()}>
-                {this.props.val.value} (<Moment date={this.props.val.date} format="DD/MM/YYYY" />)
+                {this.props.value} (<Moment date={this.props.date} format="DD/MM/YYYY" />)
             </div>
         )
     }
