@@ -23,6 +23,14 @@ class App extends React.Component {
     store.dispatch({ state: this.state, type: 'UPDATE_ARRAY' })
   }
 
+  disableAll() {
+    store.dispatch({ state: this.state, type: 'DISABLE_ALL' })
+  }
+
+  enableAll() {
+    store.dispatch({ state: this.state, type: 'ENABLE_ALL' })
+  }
+
   render() {
     return (
       <div className="App">
@@ -32,7 +40,9 @@ class App extends React.Component {
           })
         }
 
-        <button onClick={() => this.test()}>Update state</button>
+        <button onClick={() => this.test()}>Create new</button>
+        <button onClick={() => this.disableAll()}>Disable all</button>
+        <button onClick={() => this.enableAll()}>Enable all</button>
       </div>
     )
   }

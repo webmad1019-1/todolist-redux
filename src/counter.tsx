@@ -12,27 +12,52 @@ const initialState = {
 
 const store = createStore((state: any = initialState, action: any) => {
     var tasks;
+    let taskIndex;
 
     switch (action.type) {
         case 'UPDATE_ARRAY':
             tasks = [...state.tasks]
             tasks.push({
                 id: Math.round(Math.random() * 10000),
-                value: "prueba new",
-                date: new Date("5/14/2019"),
+                value: "New",
+                date: new Date(),
                 done: false
             } as TaskDataModel)
             return {
                 ...state,
                 tasks: tasks
             }
+        case 'DISABLE_ALL':
+            tasks = [...state.tasks]
+            tasks = tasks.map((task) => ({ ...task, done: true }))
+            return {
+                ...state,
+                tasks: tasks
+            }
+        case 'ENABLE_ALL':
+            tasks = [...state.tasks]
+            tasks = tasks.map((task) => ({ ...task, done: false }))
+            return {
+                ...state,
+                tasks: tasks
+            }
         case 'UPDATE_ONE':
             tasks = [...state.tasks]
-            let taskIndex = tasks.findIndex((el) => el.id === action.id)
+            taskIndex = tasks.findIndex((el) => el.id === action.id)
             tasks[taskIndex] = {
                 ...tasks[taskIndex],
                 done: !tasks[taskIndex].done
             }
+
+            return {
+                ...state,
+                tasks: [...tasks]
+            }
+
+        case 'REMOVE_ONE':
+            tasks = [...state.tasks]
+            taskIndex = tasks.findIndex((el) => el.id === action.id)
+            tasks.splice(taskIndex, 1)
 
             return {
                 ...state,

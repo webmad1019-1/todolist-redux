@@ -31,10 +31,21 @@ class Task extends React.Component<MakeCounterProps> {
         store.dispatch({ type: 'UPDATE_ONE', id: this.props.id })
     }
 
+    remove() {
+        store.dispatch({ type: 'REMOVE_ONE', id: this.props.id })
+    }
+
+    componentWillUnmount() {
+        // this
+        // debugger
+    }
+
     render() {
         return (
-            <div className={`task task--${this.theClass} task--${this.props.done}`} onClick={() => this.switchDone()}>
+            <div className={`task task--${this.theClass} task--${this.props.done}`}>
                 {this.props.value} (<Moment date={this.props.date} format="DD/MM/YYYY" />)
+                <button onClick={() => this.remove()}>Remove</button>
+                <button onClick={() => this.switchDone()}>Update</button>
             </div>
         )
     }
