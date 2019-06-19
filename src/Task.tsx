@@ -43,8 +43,8 @@ class Task extends React.Component<MakeCounterProps> {
                 </div>
                 <div className="buttons">
                     <button onClick={() => this.removeThisTask()} disabled={this.props.done ? true : false}>Remove</button>
-                    <button onClick={() => this.setTaskAsDone()}  disabled={this.props.done ? true : false}>Done</button>
-                    <button onClick={() => this.setTaskAsUndone()}  disabled={this.props.done ? false : !false}>Not done</button>
+                    <button onClick={() => this.setTaskAsDone()} disabled={this.props.done ? true : false}>Done</button>
+                    <button onClick={() => this.setTaskAsUndone()} disabled={this.props.done ? false : true}>Not done</button>
                 </div>
             </div>
         )

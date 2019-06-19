@@ -1,4 +1,4 @@
-.task {
+.task, .done-tasks {
   margin:20px;
 }
 
@@ -15,4 +15,8 @@ button {
 
 .done-tasks {
   font-size: 18px;
+
+  li {
+    margin-bottom: 10px;
+  }
 }

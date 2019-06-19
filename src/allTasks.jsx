@@ -14,11 +14,14 @@ export default class AllDoneTasks extends React.Component {
 
     render() {
         return (
-            <ul className="done-tasks">
+            <div className="done-tasks" style={{display: this.doneTasks.length > 0 ? "block" : "none"}}>
+                <h1>Done tasks</h1>
+                <ul>
                 {
                     this.doneTasks.map(task => <li key={task.id}>{task.value}</li>)
                 }
-            </ul>
+                </ul>
+            </div>
         )
     }
 }
