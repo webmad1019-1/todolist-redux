@@ -4,9 +4,9 @@ import Task from './Task';
 import store from "./reducers"
 
 class App extends React.Component {
-  store: any
+  store: object = {}
 
-  constructor(props: any) {
+  constructor(props: object) {
     super(props)
 
     store.subscribe(() => {
@@ -30,9 +30,7 @@ class App extends React.Component {
     return (
       <div className="App">
         {
-          store.getState().tasks.map(function (task: any, idx: number) {
-            return <Task key={idx} {...task} />
-          })
+          store.getState().tasks.map((task: any, idx: number) => <Task key={idx} {...task} />)
         }
 
         <div className="buttons">

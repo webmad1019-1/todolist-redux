@@ -34,12 +34,12 @@
         color: black;
 
         &:hover {
-            // background: darken($nColor, 20);
+            background: darken($nColor, 20);
         }
     }
 
     &--true {
-        background-color: red;
+        background-color: #63da6b !important;
 
         .task-data {
             text-decoration: line-through;

@@ -29,6 +29,7 @@ const store = createStore((state: any = initialState, action: any) => {
                 ...state,
                 tasks: tasks
             }
+
         case 'DISABLE_ALL_TASKS':
             tasks = [...state.tasks]
             tasks = tasks.map((task) => ({ ...task, done: true }))
@@ -36,6 +37,7 @@ const store = createStore((state: any = initialState, action: any) => {
                 ...state,
                 tasks: tasks
             }
+
         case 'ENABLE_ALL_TASKS':
             tasks = [...state.tasks]
             tasks = tasks.map((task) => ({ ...task, done: false }))
@@ -43,6 +45,7 @@ const store = createStore((state: any = initialState, action: any) => {
                 ...state,
                 tasks: tasks
             }
+
         case 'UPDATE_ONE_TASK':
             tasks = [...state.tasks]
             taskIndex = tasks.findIndex((el) => el.id === action.id)

@@ -21,13 +21,6 @@ class Task extends React.Component<MakeCounterProps> {
         super(props)
 
         this.theClass = this.props.className || "normal";
-
-        // store.subscribe(() => {
-            
-        //     this.setState(store.getState(), () => {
-        //         console.log(this.state)
-        //     })
-        // })
     }
 
     switchTaskIsDone() {
