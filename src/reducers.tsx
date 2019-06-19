@@ -46,12 +46,25 @@ const store = createStore((state: any = initialState, action: any) => {
                 tasks: tasks
             }
 
-        case 'UPDATE_ONE_TASK':
+        case 'SET_TASK_AS_DONE':
             tasks = [...state.tasks]
             taskIndex = tasks.findIndex((el) => el.id === action.id)
             tasks[taskIndex] = {
                 ...tasks[taskIndex],
-                done: !tasks[taskIndex].done
+                done: true
+            }
+
+            return {
+                ...state,
+                tasks: [...tasks]
+            }
+
+        case 'SET_TASK_AS_UNDONE':
+            tasks = [...state.tasks]
+            taskIndex = tasks.findIndex((el) => el.id === action.id)
+            tasks[taskIndex] = {
+                ...tasks[taskIndex],
+                done: false
             }
 
             return {

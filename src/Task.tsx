@@ -23,8 +23,12 @@ class Task extends React.Component<MakeCounterProps> {
         this.theClass = this.props.className || "normal";
     }
 
-    switchTaskIsDone() {
-        store.dispatch({ type: 'UPDATE_ONE_TASK', id: this.props.id })
+    setTaskAsDone() {
+        store.dispatch({ type: 'SET_TASK_AS_DONE', id: this.props.id })
+    }
+
+    setTaskAsUndone() {
+        store.dispatch({ type: 'SET_TASK_AS_UNDONE', id: this.props.id })
     }
 
     removeThisTask() {
@@ -39,7 +43,8 @@ class Task extends React.Component<MakeCounterProps> {
                 </div>
                 <div className="buttons">
                     <button onClick={() => this.removeThisTask()} disabled={this.props.done ? true : false}>Remove</button>
-                    <button onClick={() => this.switchTaskIsDone()} disabled={this.props.done ? true : false}>Mark as done</button>
+                    <button onClick={() => this.setTaskAsDone()}  disabled={this.props.done ? true : false}>Done</button>
+                    <button onClick={() => this.setTaskAsUndone()}  disabled={this.props.done ? false : !false}>Not done</button>
                 </div>
             </div>
         )

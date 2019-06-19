@@ -2,6 +2,7 @@ import React from 'react';
 import './App.scss';
 import Task from './Task';
 import store from "./reducers"
+import AllDoneTasks from './allTasks';
 
 class App extends React.Component {
   store: object = {}
@@ -18,11 +19,11 @@ class App extends React.Component {
     store.dispatch({ state: this.state, type: 'CREATE_NEW_TASK' })
   }
 
-  disableAllTasks() {
+  setNoneAsDone() {
     store.dispatch({ state: this.state, type: 'DISABLE_ALL_TASKS' })
   }
 
-  enableAllTasks() {
+  setAllAsDone() {
     store.dispatch({ state: this.state, type: 'ENABLE_ALL_TASKS' })
   }
 
@@ -35,9 +36,11 @@ class App extends React.Component {
 
         <div className="buttons">
           <button onClick={() => this.createNewTask()}>Create new</button>
-          <button onClick={() => this.disableAllTasks()}>Disable all</button>
-          <button onClick={() => this.enableAllTasks()}>Enable all</button>
+          <button onClick={() => this.setNoneAsDone()}>Done all</button>
+          <button onClick={() => this.setAllAsDone()}>Done none</button>
         </div>
+
+        <AllDoneTasks></AllDoneTasks>
       </div>
     )
   }
