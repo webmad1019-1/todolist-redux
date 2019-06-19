@@ -1,12 +1,7 @@
 import React from 'react';
 import './App.scss';
 import Task from './Task';
-import TaskDataModel from './TaskDataModel';
 import store from "./reducers"
-
-interface Test {
-  tasks: Array<TaskDataModel>
-}
 
 class App extends React.Component {
   store: any
@@ -19,16 +14,16 @@ class App extends React.Component {
     })
   }
 
-  test() {
-    store.dispatch({ state: this.state, type: 'UPDATE_ARRAY' })
+  createNewTask() {
+    store.dispatch({ state: this.state, type: 'GENERATE_FAKE_TASKS' })
   }
 
-  disableAll() {
-    store.dispatch({ state: this.state, type: 'DISABLE_ALL' })
+  disableAllTasks() {
+    store.dispatch({ state: this.state, type: 'DISABLE_ALL_TASKS' })
   }
 
-  enableAll() {
-    store.dispatch({ state: this.state, type: 'ENABLE_ALL' })
+  enableAllTasks() {
+    store.dispatch({ state: this.state, type: 'ENABLE_ALL_TASKS' })
   }
 
   render() {
@@ -40,9 +35,11 @@ class App extends React.Component {
           })
         }
 
-        <button onClick={() => this.test()}>Create new</button>
-        <button onClick={() => this.disableAll()}>Disable all</button>
-        <button onClick={() => this.enableAll()}>Enable all</button>
+        <div className="buttons">
+          <button onClick={() => this.createNewTask()}>Create new</button>
+          <button onClick={() => this.disableAllTasks()}>Disable all</button>
+          <button onClick={() => this.enableAllTasks()}>Enable all</button>
+        </div>
       </div>
     )
   }

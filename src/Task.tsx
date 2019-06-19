@@ -27,25 +27,24 @@ class Task extends React.Component<MakeCounterProps> {
         })
     }
 
-    switchDone() {
-        store.dispatch({ type: 'UPDATE_ONE', id: this.props.id })
+    switchTaskIsDone() {
+        store.dispatch({ type: 'UPDATE_ONE_TASK', id: this.props.id })
     }
 
-    remove() {
-        store.dispatch({ type: 'REMOVE_ONE', id: this.props.id })
-    }
-
-    componentWillUnmount() {
-        // this
-        // debugger
+    removeThisTask() {
+        store.dispatch({ type: 'REMOVE_ONE_TASK', id: this.props.id })
     }
 
     render() {
         return (
             <div className={`task task--${this.theClass} task--${this.props.done}`}>
-                {this.props.value} (<Moment date={this.props.date} format="DD/MM/YYYY" />)
-                <button onClick={() => this.remove()}>Remove</button>
-                <button onClick={() => this.switchDone()}>Update</button>
+                <div className="task-data">
+                    {this.props.value} (<Moment date={this.props.date} format="DD/MM/YYYY" />)
+                </div>
+                <div className="buttons">
+                    <button onClick={() => this.removeThisTask()} disabled={this.props.done ? true : false}>Remove</button>
+                    <button onClick={() => this.switchTaskIsDone()} disabled={this.props.done ? true : false}>Switch done</button>
+                </div>
             </div>
         )
     }

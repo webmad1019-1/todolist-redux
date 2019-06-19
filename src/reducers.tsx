@@ -15,7 +15,7 @@ const store = createStore((state: any = initialState, action: any) => {
     let taskIndex;
 
     switch (action.type) {
-        case 'UPDATE_ARRAY':
+        case 'GENERATE_FAKE_TASKS':
             tasks = [...state.tasks]
             tasks.push({
                 id: Math.round(Math.random() * 10000),
@@ -27,21 +27,21 @@ const store = createStore((state: any = initialState, action: any) => {
                 ...state,
                 tasks: tasks
             }
-        case 'DISABLE_ALL':
+        case 'DISABLE_ALL_TASKS':
             tasks = [...state.tasks]
             tasks = tasks.map((task) => ({ ...task, done: true }))
             return {
                 ...state,
                 tasks: tasks
             }
-        case 'ENABLE_ALL':
+        case 'ENABLE_ALL_TASKS':
             tasks = [...state.tasks]
             tasks = tasks.map((task) => ({ ...task, done: false }))
             return {
                 ...state,
                 tasks: tasks
             }
-        case 'UPDATE_ONE':
+        case 'UPDATE_ONE_TASK':
             tasks = [...state.tasks]
             taskIndex = tasks.findIndex((el) => el.id === action.id)
             tasks[taskIndex] = {
@@ -54,7 +54,7 @@ const store = createStore((state: any = initialState, action: any) => {
                 tasks: [...tasks]
             }
 
-        case 'REMOVE_ONE':
+        case 'REMOVE_ONE_TASK':
             tasks = [...state.tasks]
             taskIndex = tasks.findIndex((el) => el.id === action.id)
             tasks.splice(taskIndex, 1)
