@@ -22,9 +22,12 @@ class Task extends React.Component<MakeCounterProps> {
 
         this.theClass = this.props.className || "normal";
 
-        store.subscribe(() => {
-            this.setState(store.getState())
-        })
+        // store.subscribe(() => {
+            
+        //     this.setState(store.getState(), () => {
+        //         console.log(this.state)
+        //     })
+        // })
     }
 
     switchTaskIsDone() {
@@ -43,7 +46,7 @@ class Task extends React.Component<MakeCounterProps> {
                 </div>
                 <div className="buttons">
                     <button onClick={() => this.removeThisTask()} disabled={this.props.done ? true : false}>Remove</button>
-                    <button onClick={() => this.switchTaskIsDone()} disabled={this.props.done ? true : false}>Switch done</button>
+                    <button onClick={() => this.switchTaskIsDone()} disabled={this.props.done ? true : false}>Mark as done</button>
                 </div>
             </div>
         )

@@ -15,7 +15,7 @@ class App extends React.Component {
   }
 
   createNewTask() {
-    store.dispatch({ state: this.state, type: 'GENERATE_FAKE_TASKS' })
+    store.dispatch({ state: this.state, type: 'CREATE_NEW_TASK' })
   }
 
   disableAllTasks() {

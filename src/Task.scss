@@ -6,7 +6,7 @@
     justify-content: space-between;
     align-items: center;
     font-size: 24px;
-    transition: all 0.5s;
+    transition: all 0.75s;
 
     .buttons{
         margin: 0;
@@ -19,10 +19,6 @@
         cursor: pointer;
     }
 
-    &--true .task-data {
-        text-decoration: line-through;
-    }
-
     &--dark {
         background: black;
         color: white;
@@ -33,11 +29,20 @@
     }
 
     &--normal {
-        background-color: #63cdda;
+        $nColor: #63cdda;
+        background-color: $nColor;
         color: black;
 
         &:hover {
-            background: #ccc;
+            // background: darken($nColor, 20);
+        }
+    }
+
+    &--true {
+        background-color: red;
+
+        .task-data {
+            text-decoration: line-through;
         }
     }
 }

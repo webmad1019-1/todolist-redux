@@ -1,9 +1,11 @@
 import { createStore } from 'redux'
 import TaskDataModel from './TaskDataModel';
 
+let currentNewTask: number = 1
+
 const initialState = {
     tasks: [...Array(5)].map((x, idx) => ({
-        value: "prueba " + Math.round(Math.random() * 100),
+        value: "New " + Math.round(Math.random() * 100000),
         date: new Date("5/" + (Math.round(Math.random() * 20) + 1) + "/2019"),
         done: false,
         id: idx
@@ -11,17 +13,17 @@ const initialState = {
 }
 
 const store = createStore((state: any = initialState, action: any) => {
-    var tasks;
+    let tasks;
     let taskIndex;
 
     switch (action.type) {
-        case 'GENERATE_FAKE_TASKS':
+        case 'CREATE_NEW_TASK':
             tasks = [...state.tasks]
             tasks.push({
-                id: Math.round(Math.random() * 10000),
-                value: "New",
+                value: `New ${currentNewTask++}`,
                 date: new Date(),
-                done: false
+                done: false,
+                id: Math.round(Math.random() * 100000)
             } as TaskDataModel)
             return {
                 ...state,
