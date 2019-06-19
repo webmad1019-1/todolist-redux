@@ -2,7 +2,7 @@ import React from 'react';
 import './Task.scss';
 import Moment from 'react-moment';
 import TaskDataModel from './TaskDataModel';
-import store from "./counter"
+import store from "./reducers"
 
 interface MakeCounterProps extends TaskDataModel {
     className?: string,

@@ -2,7 +2,7 @@ import React from 'react';
 import './App.scss';
 import Task from './Task';
 import TaskDataModel from './TaskDataModel';
-import store from "./counter"
+import store from "./reducers"
 
 interface Test {
   tasks: Array<TaskDataModel>
